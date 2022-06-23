@@ -2,7 +2,7 @@ import express from "express";
 import helmet from 'helmet';
 import createError from "http-errors";
 import cors from 'cors';
-
+import db from "./models/postGreSQL.js";
 import { errorHandeler } from "./controllers/errorController.js";
 // import produitsRouter from './routes/articlesRouter.js';
 // import tarifsRouter from './routes/tarifsRouter.js'
