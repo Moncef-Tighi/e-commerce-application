@@ -17,7 +17,7 @@ export const listeArticle = catchAsync( async function(request, response) {
 
 });
 export const createArticle = catchAsync( async function(request, response) {
-
+    const article = request.body.article;
     const articles = await model.readAllArticles(request.query);
     const totalSize = articles.length
     return response.status(200).json({

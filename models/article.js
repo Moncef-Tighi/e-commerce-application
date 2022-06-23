@@ -7,12 +7,13 @@ export const readAllArticles = async function(param) {
         param["article.code_article"]=param.code_article;
         delete param.code_article;
     }
+
     const sql = `
-        SELECT article.code_article,prix_initial, prix_vente, libelle, marque, gender,division, silhouette
-        ,SUM(stock_dimension) as "stock", array_agg(dimension) as "dimension"  
-        , date_ajout,date_modification, description, id_article_wooCommerce 
+        SELECT article.code_article, prix_vente, libelle, marque, gender, array_agg(taille) as "taille"  
+        , date_ajout,date_modification
         FROM article 
-        INNER JOIN article_taille ON article.code_article=article_taille.code_article
+        INNER JOIN taille_article ON article.code_article=taille_article.code_article
+        INNER JOIN tailles ON taille_article.id_taille = tailles.id_taille
         ${query.where(param)}
         ${query.sort(param)}
         ${query.paginate(param)}
