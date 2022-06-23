@@ -1,7 +1,6 @@
 import { catchAsync } from './errorController.js';
 import * as model from '../models/article.js';
 import createError from 'http-errors';
-import db from "../models/postGreSql.js";
 
 
 export const listeArticle = catchAsync( async function(request, response) {
