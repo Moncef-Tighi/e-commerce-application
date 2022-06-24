@@ -1,0 +1,253 @@
+/*
+  CE FICHIER EST LE SEUL FICHIER DE STYLE GLOBAL.
+  Les autres feuilles de style sont des module qui ne vont s'appliquer qu'à un component. C'est volontaire, ça évite les collisions.
+  Si il y a un besoin d'une class/style global on l'ajoute juste sur ce fichier
+*/
+
+  /*
+      Tout le CSS en dessous fait partie de Tailwind, il nettoie certaines des bizarreries de CSS
+      Pour permettre d'avoir un résultat plus logique et éviter certains problèmes communs
+      Surtout ça évite d'avoir certains style inconsistant d'un navigateur à l'autre.
+  */
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box; /* 1 */
+    border-width: 0; /* 2 */
+    border-style: solid; /* 2 */
+    border-color: #e5e7eb; /* 2 */
+  }
+
+  ::before,
+  ::after {
+    --tw-content: '';
+  }
+
+  html {
+    line-height: 1.5; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+    -moz-tab-size: 4; /* 3 */
+    -o-tab-size: 4;
+      tab-size: 4; /* 3 */
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  }
+
+  body {
+    margin: 0; /* 1 */
+    line-height: inherit; /* 2 */
+  }
+  small {
+    font-size: 80%;
+  }
+
+  table {
+    text-indent: 0; /* 1 */
+    border-color: inherit; /* 2 */
+    border-collapse: collapse; /* 3 */
+  }
+
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 1 */
+    line-height: inherit; /* 1 */
+    color: inherit; /* 1 */
+    margin: 0; /* 2 */
+    padding: 0; /* 3 */
+  }
+
+  button,
+  select {
+    text-transform: none;
+  }
+
+
+  button,
+  [type='button'],
+  [type='reset'],
+  [type='submit'] {
+    -webkit-appearance: button; /* 1 */
+    background-color: transparent; /* 2 */
+    background-image: none; /* 2 */
+  }
+
+  :-moz-focusring {
+    outline: auto;
+  }
+
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+
+  progress {
+    vertical-align: baseline;
+  }
+
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    height: auto;
+  }
+
+  [type='search'] {
+    -webkit-appearance: textfield; /* 1 */
+    outline-offset: -2px; /* 2 */
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  ::-webkit-file-upload-button {
+    -webkit-appearance: button; /* 1 */
+    font: inherit; /* 2 */
+  }
+  blockquote,
+  dl,
+  dd,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  hr,
+  figure,
+  p,
+  pre {
+    margin: 0;
+  }
+
+  fieldset {
+    margin: 0;
+    padding: 0;
+  }
+
+  legend {
+    padding: 0;
+  }
+
+  ol,
+  ul,
+  menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  input::-moz-placeholder, textarea::-moz-placeholder {
+    opacity: 1; /* 1 */
+    color: #9ca3af; /* 2 */
+  }
+
+  input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    opacity: 1; /* 1 */
+    color: #9ca3af; /* 2 */
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    opacity: 1; /* 1 */
+    color: #9ca3af; /* 2 */
+  }
+
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+  :disabled {
+    cursor: default;
+  }
+
+
+/* ------------------------------------------------------------------------------------ */
+
+
+
+
+
+/*
+  Couleurs : 
+*/
+
+:root {
+  --main: #1976d2 ;
+  --main-accent: #0469DE;
+  --main-primary: #79b1f1;
+  --main-secondary: #c9e2fe ;
+  --main-hover: #FDEDED; 
+
+  --green-text: #3DB95F;
+  --blue-text: #0469DE ;
+  --icon-color: #262626;
+
+  --background-main: #E5E5E5;
+  --background-secondary: #FFFFFF;
+}
+
+body {
+  background-color: var(--background-main);
+  font-family: "Roboto", 'Poppins' ;
+}
+
+h1,h2,h3 {
+  font-family: 'Poppins', "Roboto";
+}
+
+.container {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  min-height: 80vh;
+}
+
+.main_page {
+  width: 90%;
+  padding: 3px;
+  margin: auto;
+  /* margin-left: 17.5%; */
+  margin-bottom: 25px;
+  /* background-color: white; */
+  overflow-y: auto;
+  min-height: 80vh;
+}
+
+a {
+  text-decoration: underline;
+  color: var(--main-accent);
+}
+
+
+
+
+/* MODIFICATION SCROLLBAR  */
+
+
+::-webkit-scrollbar {
+  width: 15px;
+  height: 2px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 1px;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-clip: padding-box;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: white;
+}
