@@ -4,32 +4,28 @@ import moment from 'moment';
 
 import {TableBody, TableCell, TableRow,Checkbox} from '@mui/material'
 
-import TableCustom from "../Table/TableCustom";
-import TableHeadCustom from "../Table/TableHeadCustom";
+import TableCustom from "./Table/TableCustom";
+import TableHeadCustom from "./Table/TableHeadCustom";
 import InsertionArticle from "./InsertionArticle.js"
-import useGet from "../../hooks/useGet";
-import useTable from "../../hooks/useTable";
-import useSelection from '../../hooks/useSelection.js';
-
-import { capitalize, numberWithDots } from '../util/stringFunctions.js';
+import useGet from "../hooks/useGet";
+import useTable from "../hooks/useTable";
+import useSelection from '../hooks/useSelection.js';
 
 const emptyTable= {
-    body: {
-        articles : []
-    },
+    body: [],
     totalSize: 0,
     page : 1
 }
 
-const ListeArticleCegid = function(props) {
+const ListeArticle = function(props) {
 
     const {url, handleChangePage,sortHandeler} = useTable(props.query);
-    const {data: tableData, loading, error} = useGet(`localhost:4000/articles?${url}`, emptyTable);
-    const article = tableData.body.articles
+    const {data: tableData, loading, error} = useGet(`http://localhost:4000/api/v1/articles?${url}`, emptyTable);
+    const article = tableData.body
     const {selection, selectionHandeler, deselectionHadeler}=useSelection("");
 
 
-
+    console.log(article);
     const header = [
         { name: "", sort: false},
         { name: "Code Article", sort: false},
@@ -47,7 +43,7 @@ const ListeArticleCegid = function(props) {
 
         <>
         {error ? <aside className={classes.error}>{error}</aside>: "" }
-        {taille>0 && props.modification ? 
+        {taille>0 ? 
         <InsertionArticle   taille={taille} deselectionHadeler={deselectionHadeler}  />        
         : ""}
         {article.length===0 && !loading ?<div>Aucun article n'a été trouvé</div> : ""}
@@ -63,7 +59,7 @@ const ListeArticleCegid = function(props) {
         <TableHeadCustom header={header} sortHandeler={sortHandeler}/>
 
         <TableBody>
-            {article.map((row) => {
+            {article?.map((row) => {
                 const isItemSelected= isSelected(row)
                 return (
                 <TableRow
@@ -88,10 +84,10 @@ const ListeArticleCegid = function(props) {
                 <Link to={`${row.code_article}`}>{row.code_article}</Link>
                 </TableCell>
                 <TableCell align="left">{row.libelle?.toLowerCase()}</TableCell>
-                <TableCell align="left" >{capitalize(row.marque?.toLowerCase())}</TableCell>
+                <TableCell align="left" >{row.marque?.toLowerCase()}</TableCell>
                 <TableCell align="left" >{row.gender || ""}</TableCell>
-                <TableCell align="center" >{moment(Date.parse(row.date_creation)).fromNow()}</TableCell>
-                <TableCell align="center" >{numberWithDots(row.GA_PVTTC)}</TableCell>
+                <TableCell align="center" >{moment(Date.parse(row.date_ajout)).fromNow()}</TableCell>
+                <TableCell align="center" >{row.prix_vente}</TableCell>
 
             </TableRow>)})}
         </TableBody>
@@ -103,4 +99,4 @@ const ListeArticleCegid = function(props) {
 }
 
 
-  export default ListeArticleCegid
+  export default ListeArticle

@@ -4,6 +4,7 @@ import classes from './Article.module.css';
 import { useState } from "react";
 import {Search} from '@mui/icons-material';
 import { InputAdornment } from "@mui/material";
+import ListeArticle from "../components/ListeArticle";
 
 const Article = function(props) {
     const [query, setQuery] = useState("");
@@ -43,7 +44,7 @@ const Article = function(props) {
                 </form>
             </aside>
 
-        {/* <ListeArticle query={query} sortBy={sortBy} /> */}
+        <ListeArticle query={query} sortBy={sortBy} />
 
 
         </>  
