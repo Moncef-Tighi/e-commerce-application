@@ -40,14 +40,14 @@ export const readOneCommande = async function(id_commande) {
     return response.rows;
 }
 
-export const createCommande = async function(code_article, prix_vente, libelle, marque, gender) {
+export const createCommande = async function({code_article, quantite}) {
 
     const sql = `
-    INSERT INTO article(code_article, prix_vente, libelle, marque, gender) VALUES
-    ($1, $2,$3,$4,$5)
+    INSERT INTO commande(code_article, quantite) VALUES
+    ($1, $2)
     RETURNING *
     `
-    const values = [code_article, prix_vente, libelle, marque, gender];
+    const values = [code_article, quantite];
     const response = await db.query(sql, values)
     return response.rows[0];
 

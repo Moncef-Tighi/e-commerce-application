@@ -31,6 +31,8 @@ function Cart() {
             await axios.post("http://localhost:4000/api/v1/commandes/", commande)
         })
         createAlert("Réussite", "Votre commande a bien été passée.");
+        await AsyncStorage.clear();
+        setArticles([]);
     }
 
   

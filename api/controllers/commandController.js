@@ -31,9 +31,9 @@ export const getOneCommande = catchAsync( async function(request, response, next
 
 
 export const createCommande = catchAsync( async function(request, response,next) {
-    const commande = request.body.commande;
-    if (!commande || !commande.code_commande) return next(createError(400, "Impossible de trouver les informations de la commande"))
-    const commandeCreation = await model.createCommande(...commande);
+    const commande = request.body;
+    if (!commande) return next(createError(400, "Impossible de trouver les informations de la commande"))
+    const commandeCreation = await model.createCommande(commande);
 
     return response.status(200).json({
         status: "ok",
