@@ -27,13 +27,13 @@ export const readAllArticles = async function(param) {
 }
 
 export const readOneArticle = async function(code_article) {
-
+    
     const sql = `
         SELECT article.code_article, prix_vente, libelle, marque, gender, array_agg(taille) as "taille"  
         , date_ajout,date_modification
         FROM article 
-        INNER JOIN taille_article ON article.code_article=taille_article.code_article
-        INNER JOIN tailles ON taille_article.id_taille = tailles.id_taille
+        LEFT JOIN taille_article ON article.code_article=taille_article.code_article
+        LEFT JOIN tailles ON taille_article.id_taille = tailles.id_taille
         WHERE article.code_article = '${code_article}'
         GROUP BY article.code_article
         `
@@ -51,23 +51,19 @@ export const createArticle = async function({code_article, prix_vente, libelle, 
     `
     const values = [code_article, prix_vente, libelle, marque, gender];
     const response = await db.query(sql, values)
-    console.log(response);
     return response.rows[0];
 
 }
 
 export const updateArticle = async function({code_article, prix_vente, libelle, marque, gender}) {
-    console.log(code_article);
     const sql = `
     UPDATE article SET
     prix_vente = $1, libelle=$2, marque=$3, gender=$4 
     WHERE code_article= '${code_article}'
     RETURNING *
     `
-    console.log(sql);
     const values = [prix_vente, libelle, marque, gender];
     const response = await db.query(sql, values)
-    console.log(response);
     return response.rows[0];
 
 }

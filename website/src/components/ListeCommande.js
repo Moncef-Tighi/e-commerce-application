@@ -80,9 +80,11 @@ const ListeCommande = function(props) {
                 <TableCell component="th" scope="row">
                 <Link to={`${row.id_commande}`}>{row.id_commande}</Link>
                 </TableCell>
-                <TableCell align="left">{row.code_article}</TableCell>
+                <TableCell align="left">
+                <Link to={`/article/${row.code_article}`}>{row.code_article}</Link>
+                </TableCell>
                 <TableCell align="left" >{row.marque}</TableCell>
-                <TableCell align="left" >{row.quantité}</TableCell>
+                <TableCell align="left" >{row.quantite}</TableCell>
                 <TableCell align="center" >{row.prix_vente}</TableCell>
                 <TableCell align="center" >{row.nom_client}</TableCell>
                 <TableCell align="center" >{row.prenom_client}</TableCell>
