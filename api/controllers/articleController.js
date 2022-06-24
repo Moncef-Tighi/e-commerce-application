@@ -21,6 +21,7 @@ export const getOneArticle = catchAsync( async function(request, response, next)
     if (!code_article) return next(createError(400, "Le code article n'a pas été trouvé"))
 
     const articles = await model.readOneArticle(code_article);
+    if (!articles) return next(createError(400, "Aucune artucke avec ce code_article n'a été trouvé"))
     return response.status(200).json({
         status: "ok",
         body : articles

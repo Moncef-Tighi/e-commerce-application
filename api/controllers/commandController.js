@@ -16,6 +16,20 @@ export const listeCommand = catchAsync( async function(request, response) {
 
 });
 
+export const getOneCommande = catchAsync( async function(request, response, next) {
+    const id_commande = request.params.id_commande;
+    if (!id_commande) return next(createError(400, "Le numéro de commande n'a pas été trouvé"))
+
+    const commande = await model.readOneCommande(id_commande);
+    if (!commande) return next(createError(400, "Aucune commande avec cet id n'a été trouvé"))
+    return response.status(200).json({
+        status: "ok",
+        body : commande
+    });
+
+});
+
+
 export const createCommande = catchAsync( async function(request, response,next) {
     const commande = request.body.commande;
     if (!commande || !commande.code_commande) return next(createError(400, "Impossible de trouver les informations de la commande"))
