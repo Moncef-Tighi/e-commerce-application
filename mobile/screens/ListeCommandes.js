@@ -1,8 +1,8 @@
-import {Button,Text,View,FlatList,StyleSheet} from "react-native";
+import {Button,Text,View,FlatList, Alert} from "react-native";
 import * as React from "react";
 import useGet from "../hooks/useGet";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { StyleSheet } from "react-native";
 const createAlert = (titre, message) =>
     Alert.alert(
         titre,
