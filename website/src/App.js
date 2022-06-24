@@ -18,6 +18,7 @@ function App() {
       <Route element={<Page/>}>
         <Route path='/article' element={<Article />}/>
         <Route path='/commande' element={<Commande />}/>
+        <Route path='/article/ajouter' element={<ArticleForm/>}/>
         <Route path='/article/:code_article' element={<ArticleForm/>}/>
         {/* <Route path='/commande/:id_commande' element={<FicheCommande />}/> */}
       </Route>

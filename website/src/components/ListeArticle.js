@@ -9,6 +9,7 @@ import TableHeadCustom from "./Table/TableHeadCustom";
 import useGet from "../hooks/useGet";
 import useTable from "../hooks/useTable";
 import useSelection from '../hooks/useSelection.js';
+import InsertionArticle from './InsertionArticle';
 
 const emptyTable= {
     body: [],
@@ -31,7 +32,7 @@ const ListeArticle = function(props) {
         { name: "Libelle", sort: false},
         { name: "Marque", sort: true, trueName : "marque"},
         { name: "Gender", sort: true, trueName : "gender"},
-        { name: "Date Ajout", sort: true , trueName : "date_modification"},
+        { name: "Date Ajout", sort: true , trueName : "date_ajout"},
         { name: "Prix de vente", sort: true , trueName : "prix_vente"} ,
     ]
 
@@ -42,6 +43,7 @@ const ListeArticle = function(props) {
 
         <>
         {error ? <aside className={classes.error}>{error}</aside>: "" }
+        <InsertionArticle   taille={taille} deselectionHadeler={deselectionHadeler}  />        
         {article.length===0 && !loading ?<div>Aucun article n'a été trouvé</div> : ""}
         <TableCustom
             tableData={tableData.body}
@@ -78,7 +80,7 @@ const ListeArticle = function(props) {
                 <Link to={`${row.code_article}`}>{row.code_article}</Link>
                 </TableCell>
                 <TableCell align="left">{row.libelle?.toLowerCase()}</TableCell>
-                <TableCell align="left" >{row.marque?.toLowerCase()}</TableCell>
+                <TableCell align="left" >{row.marque}</TableCell>
                 <TableCell align="left" >{row.gender || ""}</TableCell>
                 <TableCell align="center" >{moment(Date.parse(row.date_ajout)).fromNow()}</TableCell>
                 <TableCell align="center" >{row.prix_vente}</TableCell>

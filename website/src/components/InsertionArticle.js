@@ -1,8 +1,13 @@
 import {Button} from '@mui/material'
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import classes from './ListeArticle.module.css';
+import { useNavigate } from 'react-router-dom';
 
 function InsertionArticle({taille, deselectionHadeler}) {
+    const navigate = useNavigate();
+    const AddArticle = function() {
+        navigate("ajouter")
+    }
     return (<aside className={classes.aside}>
               <p>{taille} articles sélectionnés</p>
               <div>    
@@ -11,7 +16,8 @@ function InsertionArticle({taille, deselectionHadeler}) {
                 }} onClick={deselectionHadeler}>
                       Tout Déselectionner
                   </Button>    
-                  <Button variant="contained" size='small' startIcon={<AddCircleOutlineIcon />}>
+                  <Button variant="contained" size='small' startIcon={<AddCircleOutlineIcon />}
+                  onClick={AddArticle}>
                       Ajouter un article
                   </Button>
               </div>

@@ -32,7 +32,7 @@ export const getOneArticle = catchAsync( async function(request, response, next)
 export const createArticle = catchAsync( async function(request, response,next) {
     const article = request.body.article;
     if (!article || !article.code_article) return next(createError(400, "Impossible de trouver l'article"))
-    const articleCreation = await model.createArticle(...article);
+    const articleCreation = await model.createArticle(article);
 
     return response.status(200).json({
         status: "ok",
