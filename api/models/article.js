@@ -56,16 +56,18 @@ export const createArticle = async function(code_article, prix_vente, libelle, m
 
 }
 
-export const updateArticle = async function(code_article, prix_vente, libelle, marque, gender) {
-
+export const updateArticle = async function({code_article, prix_vente, libelle, marque, gender}) {
+    console.log(code_article);
     const sql = `
     UPDATE article SET
-    prix_vente = $2 libelle=$3 marque=$4 gender=$5 
-    WHERE code_article=$1
+    prix_vente = $1, libelle=$2, marque=$3, gender=$4 
+    WHERE code_article= '${code_article}'
     RETURNING *
     `
-    const values = [code_article, prix_vente, libelle, marque, gender];
+    console.log(sql);
+    const values = [prix_vente, libelle, marque, gender];
     const response = await db.query(sql, values)
+    console.log(response);
     return response.rows[0];
 
 }

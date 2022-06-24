@@ -5,7 +5,7 @@ import LoginPage from './pages/LoginPage';
 import Page from './pages/Page'
 
 const Article = React.lazy(() => import('./pages/Article'));
-// const FicheArticle = React.lazy(() => import('./pages/FicheArticle'));
+const ArticleForm = React.lazy(() => import('./components/ArticleForm'));
 const Commande = React.lazy(() => import('./pages/Commande'));
 // const FicheCommande = React.lazy(() => import('./pages/FicheCommande'));
 
@@ -18,8 +18,8 @@ function App() {
       <Route element={<Page/>}>
         <Route path='/article' element={<Article />}/>
         <Route path='/commande' element={<Commande />}/>
-        {/* <Route path='/article/:code_article' element={<FicheArticle/>}/>
-        <Route path='/commande/:id_commande' element={<FicheCommande />}/> */}
+        <Route path='/article/:code_article' element={<ArticleForm/>}/>
+        {/* <Route path='/commande/:id_commande' element={<FicheCommande />}/> */}
       </Route>
       <Route path='*' element={<div>ERREUR 404</div>}/>
     </Routes>

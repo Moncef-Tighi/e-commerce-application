@@ -40,11 +40,11 @@ export const createArticle = catchAsync( async function(request, response,next) 
     });
 
 });
-export const updateArticle = catchAsync( async function(request, response) {
+export const updateArticle = catchAsync( async function(request, response, next) {
 
     const article = request.body.article;
     if (!article || !article.code_article) return next(createError(400, "Impossible de trouver l'article"))
-    const articleUpdate = await model.updateArticle(...article);
+    const articleUpdate = await model.updateArticle(article);
 
     return response.status(200).json({
         status: "ok",
