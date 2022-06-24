@@ -10,7 +10,7 @@ export const readAllCommandes = async function(param) {
 
     const sql = `
     SELECT id_commande, article.code_article, quantite, prix_vente, marque, nom_client, prenom_client
-    adresse, numero_client, email_client
+    ,adresse, numero_client, email_client
     FROM commande
     INNER JOIN article ON article.code_article = commande.code_article
     ${query.where(param)}

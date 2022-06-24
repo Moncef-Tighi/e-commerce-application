@@ -12,7 +12,7 @@ function InsertionArticle({taille, deselectionHadeler}) {
                       Tout Déselectionner
                   </Button>    
                   <Button variant="contained" size='small' startIcon={<AddCircleOutlineIcon />}>
-                      Modifier
+                      Ajouter un article
                   </Button>
               </div>
           </aside>);
